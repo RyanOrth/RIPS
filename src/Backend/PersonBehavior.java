@@ -9,11 +9,19 @@ public class PersonBehavior {
 		NO_MASK, WEARING_MASK,
 	}
 	
-	public PersonBehavior() {
-		
+	InfectionType infectionStatus;
+	SafetyMeasures safetyMeasureStatus;
+	
+	public PersonBehavior(InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus) {
+		setInfectionType(infectionStatus);
+		setSafetyMeasures(safetyMeasureStatus);
 	}
 	
-	private void setInfectionType(InfectionType infectionType) {
-		
+	private void setInfectionType(InfectionType infectionStatus) {
+		this.infectionStatus = infectionStatus;
+	}
+	
+	private void setSafetyMeasures(SafetyMeasures safetyMeasureStatus) {
+		this.safetyMeasureStatus = safetyMeasureStatus;
 	}
 }
