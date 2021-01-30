@@ -11,17 +11,26 @@ public class PersonBehavior {
 	
 	InfectionType infectionStatus;
 	SafetyMeasures safetyMeasureStatus;
+	int xPos;
+	int yPos;
 	
-	public PersonBehavior(InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus) {
+	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus) {
+		setPos(xPos, yPos);
 		setInfectionType(infectionStatus);
 		setSafetyMeasures(safetyMeasureStatus);
 	}
 	
-	private void setInfectionType(InfectionType infectionStatus) {
+	public void setInfectionType(InfectionType infectionStatus) {
 		this.infectionStatus = infectionStatus;
 	}
 	
-	private void setSafetyMeasures(SafetyMeasures safetyMeasureStatus) {
+	public void setSafetyMeasures(SafetyMeasures safetyMeasureStatus) {
 		this.safetyMeasureStatus = safetyMeasureStatus;
+	}
+	
+	public void setPos(int xPos, int yPos) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+		//Update the shape position here
 	}
 }
