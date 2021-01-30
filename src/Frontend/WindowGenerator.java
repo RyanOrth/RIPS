@@ -5,12 +5,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class WindowGenerator extends JFrame {
 	
 	public WindowGenerator() {
 		JPanel panel = new JPanel();
+		JButton submit = new JButton("Submit");
+		submit.setBounds(1300, 650, 1400, 600);
+		panel.add(submit);
 	    getContentPane().add(panel);
 	    setMinimumSize(new Dimension(1100, 700));
 	}
@@ -30,6 +34,7 @@ public class WindowGenerator extends JFrame {
 	
 	public static void main(String args[]) {
 		WindowGenerator map = new WindowGenerator();
+		//map.onSubmit();
 		map.setVisible(true);
 	}
 }
