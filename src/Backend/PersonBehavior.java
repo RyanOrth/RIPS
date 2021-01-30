@@ -1,6 +1,8 @@
 package Backend;
 
-public class PersonBehavior {
+import java.util.TimerTask;
+
+public class PersonBehavior extends TimerTask{
 	public enum InfectionType {
 		INFECTED, NOT_INFECTED,
 	}
@@ -33,4 +35,22 @@ public class PersonBehavior {
 		this.yPos = yPos;
 		//Update the shape position here
 	}
+
+	@Override
+	public void run() {
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
