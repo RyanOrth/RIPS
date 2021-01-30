@@ -32,15 +32,11 @@ public class SimLogic {
 	}
 	
 	private static int genRanCoord() {	//Generate random coordinate point
-		int range = 16;	//Max - min + 1
-		int rand = (int)(Math.random() * range);
-		return rand;
+		return (int)(Math.random() * 16);
 	}
 	
 	private static int randStatus() {	//Used for infectionStatus and safetyMeasureStatus
-		int range = 2;
-		int rand = (int)(Math.random() * range);
-		return rand;
+		return (int)(Math.random() * 2);
 	}
 
 }
