@@ -9,11 +9,11 @@ public class PersonGraphics {
 	private Shape personShape;
 	private Color personColor;
 	
-	/*public Shape generateShape(InfectionType infectionType, SafetyMeasures safetyMeasures) {
+	/*public Shape generatePersonShape(InfectionType infectionType, SafetyMeasures safetyMeasures, double xPos, double yPos) {
 		if(safetyMeasures == safetyMeasures.WEARING_MASK){
 			
 		}else {
-			return new Circle
+			return new Circle(xPos, yPos, );
 		}
 	}*/
 }

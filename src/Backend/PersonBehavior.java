@@ -1,6 +1,8 @@
 package Backend;
 
-public class PersonBehavior {
+import java.util.TimerTask;
+
+public class PersonBehavior extends TimerTask{
 	public enum InfectionType {
 		INFECTED, NOT_INFECTED,
 	}
@@ -14,10 +16,14 @@ public class PersonBehavior {
 	int xPos;
 	int yPos;
 	
+	int xDest; //xPos destination
+	int yDest; //yPos destination
+	
 	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus) {
 		setPos(xPos, yPos);
 		setInfectionType(infectionStatus);
 		setSafetyMeasures(safetyMeasureStatus);
+		genDestination();
 	}
 	
 	public void setInfectionType(InfectionType infectionStatus) {
@@ -33,4 +39,27 @@ public class PersonBehavior {
 		this.yPos = yPos;
 		//Update the shape position here
 	}
+
+	public void genDestination() {
+		this.xDest = SimLogic.genRanCoord();
+		this.yDest = SimLogic.genRanCoord();
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
