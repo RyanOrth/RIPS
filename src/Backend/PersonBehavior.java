@@ -16,10 +16,14 @@ public class PersonBehavior extends TimerTask{
 	int xPos;
 	int yPos;
 	
+	int xDest; //xPos destination
+	int yDest; //yPos destination
+	
 	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus) {
 		setPos(xPos, yPos);
 		setInfectionType(infectionStatus);
 		setSafetyMeasures(safetyMeasureStatus);
+		genDestination();
 	}
 	
 	public void setInfectionType(InfectionType infectionStatus) {
@@ -36,6 +40,11 @@ public class PersonBehavior extends TimerTask{
 		//Update the shape position here
 	}
 
+	public void genDestination() {
+		this.xDest = SimLogic.genRanCoord();
+		this.yDest = SimLogic.genRanCoord();
+	}
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

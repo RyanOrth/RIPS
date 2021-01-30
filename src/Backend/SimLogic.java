@@ -31,7 +31,7 @@ public class SimLogic {
 		}
 	}
 	
-	private static int genRanCoord() {	//Generate random coordinate point
+	public static int genRanCoord() {	//Generate random coordinate point
 		return (int)(Math.random() * 16);
 	}
 	
