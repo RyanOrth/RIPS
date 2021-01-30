@@ -1,5 +1,6 @@
 package Frontend;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
@@ -11,7 +12,7 @@ public class MapGenerator extends JFrame {
 	public MapGenerator() {
 		JPanel panel = new JPanel();
 	    getContentPane().add(panel);
-	    setSize(800, 700);
+	    setMinimumSize(new Dimension(1100, 700));
 	}
 	
 	public void paint(Graphics g) {
