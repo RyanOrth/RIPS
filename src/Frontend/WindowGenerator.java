@@ -7,9 +7,9 @@ import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
-public class MapGenerator extends JFrame {
+public class WindowGenerator extends JFrame {
 	
-	public MapGenerator() {
+	public WindowGenerator() {
 		JPanel panel = new JPanel();
 	    getContentPane().add(panel);
 	    setMinimumSize(new Dimension(1100, 700));
@@ -29,7 +29,7 @@ public class MapGenerator extends JFrame {
 	}
 	
 	public static void main(String args[]) {
-		MapGenerator map = new MapGenerator();
+		WindowGenerator map = new WindowGenerator();
 		map.setVisible(true);
 	}
 }
