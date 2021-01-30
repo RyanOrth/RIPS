@@ -5,7 +5,7 @@ public class PersonBehavior {
 		INFECTED, NOT_INFECTED,
 	}
 	
-	public enum SafetyMeasures{
+	public enum SafetyMeasures {
 		NO_MASK, WEARING_MASK,
 	}
 	
@@ -13,7 +13,7 @@ public class PersonBehavior {
 		
 	}
 	
-	private void setBehavior() {
+	private void setInfectionType(InfectionType infectionType) {
 		
 	}
 }
