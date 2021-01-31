@@ -29,9 +29,12 @@ import javax.swing.JOptionPane;
 import Backend.SimLogic.*;
 
 public class WindowGenerator extends JFrame {
-	private JTextField peopleField = new JTextField("Enter number of people here."); //Enter number of people here.
-	private JTextField infectionField = new JTextField("Enter number of people here."); //Enter infection status here. (\"infected\" or \"not infected\")
-	private JTextField maskField = new JTextField("Enter number of people here."); //Enter mask status here. (\"mask\" or \"no mask\")
+	private JTextField peopleField = new JTextField("");
+	private JTextField infoForPeopleField = new JTextField("Enter amount of people below.");
+	private JTextField infectionField = new JTextField("");
+	private JTextField infoForInfectionField = new JTextField("Enter infection status below: \"infected\" or \"not infected\"");
+	private JTextField maskField = new JTextField("");
+	private JTextField infoForMaskField = new JTextField("Enter mask status below: \"mask\" or \"no mask\"");
 	private Integer numPeople;
 	private String infectionStatus;
 	private String maskStatus;
@@ -40,15 +43,36 @@ public class WindowGenerator extends JFrame {
 		JPanel panel = new JPanel();
 		JPanel inputPanel = new JPanel();
 		JButton submit = new JButton("Submit");
-		submit.setSize(10, 40);
-		peopleField.setSize(10, 40);
-		infectionField.setSize(10, 40);
-		maskField.setSize(10, 40);
-		inputPanel.add(peopleField);
+		submit.setMaximumSize(new Dimension(200, 75));
+		peopleField.setMaximumSize(new Dimension(600, 75));
+		infectionField.setMaximumSize(new Dimension(600, 75));
+		maskField.setMaximumSize(new Dimension(600, 75));
+		infoForPeopleField.setMaximumSize(new Dimension(600, 75));
+		infoForInfectionField.setMaximumSize(new Dimension(600, 75));
+		infoForMaskField.setMaximumSize(new Dimension(600, 75));
+		infoForPeopleField.setEditable(false);
+		infoForInfectionField.setEditable(false);
+		infoForMaskField.setEditable(false);
 		inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
+		inputPanel.add(Box.createHorizontalStrut(150));
+		inputPanel.add(infoForPeopleField);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		inputPanel.add(peopleField);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		inputPanel.add(Box.createHorizontalStrut(300));
+		inputPanel.add(infoForInfectionField);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		inputPanel.add(infectionField);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		inputPanel.add(Box.createHorizontalStrut(300));
+		inputPanel.add(infoForMaskField);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		inputPanel.add(maskField);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		inputPanel.add(Box.createHorizontalStrut(300));
 		inputPanel.add(submit);
+		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		inputPanel.add(Box.createHorizontalStrut(150));
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +103,7 @@ public class WindowGenerator extends JFrame {
 	    Container contentPane = getContentPane();
 	    contentPane.add(panel, BorderLayout.CENTER);
 	    contentPane.add(inputPanel, BorderLayout.EAST);
-	    setMinimumSize(new Dimension(1100, 700));
+	    setMinimumSize(new Dimension(1300, 850));
 	}
 	
 	public void clearEntry() {
