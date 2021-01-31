@@ -6,15 +6,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.plaf.LayerUI;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
@@ -26,7 +30,9 @@ import Backend.InfectionType;
 import Backend.SafetyMeasures;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayer;
 import javax.swing.JOptionPane;
 
 public class WindowGenerator extends JFrame implements ActionListener{
@@ -41,16 +47,15 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	private Integer numPeople;
 	private Integer infectionStatus;
 	private Integer maskStatus;
-	private boolean readyToRun;
+	private boolean readyToRun = true;
 	Timer timer; 
 	
 	public WindowGenerator() {
 		timer = new Timer(100, this); 
 		timer.start(); 
-		JPanel panel = new JPanel();
+		JFrame f = new JFrame();
+		JPanel gridPanel = new JPanel();
 		JPanel inputPanel = new JPanel();
-	//	JButton submit = new JButton("Submit this round of people");
-	//	JButton doneButton = new JButton("Done entering all values");
 		submit.setMaximumSize(new Dimension(200, 75));
 		doneButton.setMaximumSize(new Dimension(200, 75));
 		peopleField.setMaximumSize(new Dimension(600, 75));
@@ -84,8 +89,8 @@ public class WindowGenerator extends JFrame implements ActionListener{
 		inputPanel.add(doneButton);
 		inputPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		inputPanel.add(Box.createHorizontalStrut(150));
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-/*		submit.addActionListener(new ActionListener() {
+		gridPanel.setLayout(new BoxLayout(gridPanel, BoxLayout.PAGE_AXIS));
+		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					numPeople = Integer.valueOf(peopleField.getText());
@@ -105,10 +110,12 @@ public class WindowGenerator extends JFrame implements ActionListener{
 				readyToRun = true;
 				System.out.println("done");
 			}
-		});*/
-		Container contentPane = getContentPane();
-		contentPane.add(panel, BorderLayout.CENTER);
-		contentPane.add(inputPanel, BorderLayout.EAST);
+		});
+		f.add(inputPanel);
+		f.add(gridPanel);
+	//	Container contentPane = getContentPane();
+	//	contentPane.add(panel, BorderLayout.CENTER);
+	//	contentPane.add(inputPanel, BorderLayout.EAST);
 		setMinimumSize(new Dimension(1200, 850));
 	}
 	
@@ -119,13 +126,15 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	}
 
 	public static Graphics2D g2;
-
+	
 	public void paint(Graphics g) {
 		super.paint(g);
 		// Graphics2D g2 = (Graphics2D) g;
+		 Image img = createImageWithText();
+	      g.drawImage(img, 20,20,this);
 		g2 = (Graphics2D) g;
-
-		for (int i = 50; i <= 800; i += 50) {
+		
+		/*for (int i = 50; i <= 800; i += 50) {
 			Line2D line = new Line2D.Double(i, 800, i, 50);
 			g2.draw(line);
 		}
@@ -133,9 +142,8 @@ public class WindowGenerator extends JFrame implements ActionListener{
 		for (int v = 800; v >= 50; v -= 50) {
 			Line2D line = new Line2D.Double(50, v, 800, v);
 			g2.draw(line);
-		}
-
-		if(readyToRun) {
+		}*/
+		//ShapesPaint.paint(g);
 		for (int i = 0; i < 25; i++) {
 			int posX = SimLogic.genRanCoord();
 			int posY = SimLogic.genRanCoord();
@@ -153,8 +161,48 @@ public class WindowGenerator extends JFrame implements ActionListener{
 		// g2.draw(line);
 
 		// generatePersonGraphics(2,2, SafetyMeasures.NO_MASK, InfectionType.INFECTED);
-		}
+		
 		System.out.println("Skipped runner");
+	}
+	
+	//public void paint(Graphics g) {
+	  //    Image img = createImageWithText();
+	    //  g.drawImage(img, 20,20,this);
+	   //}
+
+	   private Image createImageWithText() {
+	      BufferedImage bufferedImage = new BufferedImage(800, 800, BufferedImage.TYPE_BYTE_GRAY);
+	      Graphics g = bufferedImage.getGraphics();
+
+	      for (int i = 50; i <= 800; i += 50) {
+	      	g.drawLine(i, 800, i, 50);
+	      }
+	      
+	      for (int v = 800; v >= 50; v -= 50) {
+		      	g.drawLine(50, v, 800, v);
+		      }
+	    //  g.drawString("www.tutorialspoint.com", 20,40);
+	    //  g.drawString("www.tutorialspoint.com", 20,60);
+	    //  g.drawString("www.tutorialspoint.com", 20,80);
+	    // g.drawString("www.tutorialspoint.com", 20,100);
+	      
+	      return bufferedImage;
+	   }
+	
+	public void paintShapes(Graphics g) {
+		g2 = (Graphics2D) g;
+		for (int i = 0; i < 25; i++) {
+			int posX = SimLogic.genRanCoord();
+			int posY = SimLogic.genRanCoord();
+
+			InfectionType infectionStatusValue = SimLogic.infectionStatus[(int) (Math.random() * 2)];
+			SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[(int) (Math.random() * 2)];
+
+			SimLogic.person.add(new PersonBehavior(posX, posY, infectionStatusValue, safetyMeasuresValue, g2));
+
+			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue
+					+ ", Safety Measures: " + safetyMeasuresValue);
+		}
 	}
 
 	public static void generatePersonGraphics(double xPos, double yPos, SafetyMeasures safetyMeasures,
@@ -195,7 +243,8 @@ public class WindowGenerator extends JFrame implements ActionListener{
 			g2.fill(new Ellipse2D.Double(xPos, yPos, 0, 0));
 		}
 	}
-
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==timer) { 
