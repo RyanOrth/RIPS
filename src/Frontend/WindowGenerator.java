@@ -30,14 +30,14 @@ import javax.swing.JOptionPane;
 
 public class WindowGenerator extends JFrame {
 	private JTextField peopleField = new JTextField("");
-	private JTextField infoForPeopleField = new JTextField("Enter amount of people below.");
+	private JTextField infoForPeopleField = new JTextField("Enter total number of people below:");
 	private JTextField infectionField = new JTextField("");
-	private JTextField infoForInfectionField = new JTextField("Enter infection status below: \"infected\" or \"not infected\"");
+	private JTextField infoForInfectionField = new JTextField("Enter percentage of infected/not infected below:");
 	private JTextField maskField = new JTextField("");
-	private JTextField infoForMaskField = new JTextField("Enter mask status below: \"mask\" or \"no mask\"");
+	private JTextField infoForMaskField = new JTextField("Enter percentage of masked/not masked below:");
 	private Integer numPeople;
-	private String infectionStatus;
-	private String maskStatus;
+	private Integer infectionStatus;
+	private Integer maskStatus;
 	
 	public WindowGenerator() {
 		JPanel panel = new JPanel();
@@ -78,23 +78,11 @@ public class WindowGenerator extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					numPeople = Integer.valueOf(peopleField.getText());
-					if(infectionField.getText().equals("infected") || infectionField.getText().equals("not infected")) {
-						infectionStatus = infectionField.getText();
-					} else {
-						JOptionPane.showMessageDialog(null, "Please only enter \"infected\" or \"not infected\" for infection status.");
-						clearEntry();
-						return;
-					}
-					if(maskField.getText().equals("mask") || maskField.getText().equals("no mask")) {
-						maskStatus = maskField.getText();
-					} else {
-						JOptionPane.showMessageDialog(null, "Please only enter \"mask\" or \"no mask\" for mask status.");
-						clearEntry();
-						return;
-					}
+					infectionStatus = Integer.valueOf(infectionField.getText());
+					maskStatus = Integer.valueOf(maskField.getText());
 					System.out.println(numPeople + "\n" + infectionStatus + "\n" + maskStatus);
 				} catch (IllegalArgumentException j) {
-					JOptionPane.showMessageDialog(null, "Please only enter a numerical value for number of people here.");
+					JOptionPane.showMessageDialog(null, "Please only enter a numerical value for these entries.");
 					clearEntry();
 					return;
 				}
@@ -103,7 +91,7 @@ public class WindowGenerator extends JFrame {
 	    Container contentPane = getContentPane();
 	    contentPane.add(panel, BorderLayout.CENTER);
 	    contentPane.add(inputPanel, BorderLayout.EAST);
-	    setMinimumSize(new Dimension(1300, 850));
+	    setMinimumSize(new Dimension(1200, 850));
 	}
 	
 	public void clearEntry() {
