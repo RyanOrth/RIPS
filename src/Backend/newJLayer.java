@@ -26,7 +26,7 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 			int yDest = newPeople.genRanCoord();
 			InfectionType infectionStatusValue = newPeople.infectionStatus[((int)Math.random())];
 			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[((int)Math.random())];
-			people.add(new newPeople(xPos, yPos, timer, int xDest, int yDest, infectionStatusValue, safetyStatus));
+			people.add(new newPeople(xPos, yPos, timer, xDest, yDest, infectionStatusValue, safetyStatus));
 		}
 	}
 	
