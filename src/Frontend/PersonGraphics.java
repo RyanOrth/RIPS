@@ -12,7 +12,7 @@ public class PersonGraphics {
 	private Shape personShape;
 	private Color personColor;
 	
-	public Object generatePersonShape(SafetyMeasures safetyMeasures, double xPos, double yPos) {
+	public Object generatePersonShape(double xPos, double yPos, SafetyMeasures safetyMeasures) {
 		if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
 			return new Ellipse2D.Double(xPos, yPos, 6, 6);
 		}else {
@@ -28,11 +28,23 @@ public class PersonGraphics {
 		}
 	}
 	
-	public Ellipse2D.Double generateInfectionCircle(InfectionType infectionType, double xPos, double yPos){
+	public Ellipse2D.Double generateInfectionCircle(double xPos, double yPos, InfectionType infectionType,SafetyMeasures safetyMeasures){
 		if(infectionType == InfectionType.INFECTED) {
-			return new Ellipse2D.Double(xPos, yPos, 12, 12);
+			if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
+				return new Ellipse2D.Double(xPos, yPos, 9, 9);
+			}else {
+				return new Ellipse2D.Double(xPos, yPos, 12, 12);
+			}
 		}else {
 			return new Ellipse2D.Double(xPos, yPos, 0, 0);
+		}
+	}
+	
+	public Color colorInfectionCircle(SafetyMeasures safetyMeasures, Ellipse2D.Double infectionCircle){
+		if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
+			return new Color((float) 203,(float) 206,(float) 212,(float) 0.5);
+		}else {
+			return new Color((float) 128,(float) 255,(float) 0,(float) 0.5);
 		}
 	}
 }
