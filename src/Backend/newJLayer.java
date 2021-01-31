@@ -16,7 +16,7 @@ import javax.swing.Timer;
 public class newJLayer extends JLayeredPane implements ActionListener{
 	Timer timer; 
 	
-	ArrayList<newPeople> people = new ArrayList<newPeople>();
+	static ArrayList<newPeople> people = new ArrayList<newPeople>();
 	
 	public void initializePeople() {
 		for(int i = 0; i < 20; i++) {
