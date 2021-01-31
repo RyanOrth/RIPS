@@ -20,12 +20,12 @@ import Backend.InfectionType;
 import Backend.PersonBehavior;
 import Backend.SafetyMeasures;
 import Backend.SimLogic;
+import Backend.InfectionType;
+import Backend.SafetyMeasures;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import Backend.SimLogic.*;
 
 public class WindowGenerator extends JFrame {
 	private JTextField peopleField = new JTextField("Enter number of people here."); //Enter number of people here.
@@ -106,10 +106,9 @@ public class WindowGenerator extends JFrame {
 			int posX = SimLogic.genRanCoord();
 			int posY = SimLogic.genRanCoord();
 			
-			InfectionType infectionStatusValue = SimLogic.infectionStatus[SimLogic.randStatus()];
-			SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[SimLogic.randStatus()];
+			InfectionType infectionStatusValue = SimLogic.infectionStatus[(int)(Math.random() * 2)];
+			SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[(int)(Math.random() * 2)];
 			
-			//System.out.println("In SimLogic paint method just before person.add");
 			SimLogic.person.add(new PersonBehavior(posX, posY, infectionStatusValue, safetyMeasuresValue, g2));
 			
 			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyMeasuresValue);
@@ -121,57 +120,44 @@ public class WindowGenerator extends JFrame {
 		//generatePersonGraphics(2,2, SafetyMeasures.NO_MASK, InfectionType.INFECTED);
 	}
 	
-	public static void generatePersonGraphics(double xPos, double yPos, SafetyMeasures safetyMeasures, InfectionType infectionType) {
-		//System.out.println("In generate person graphics");
-		
-		System.out.print("(" + xPos + ", " + yPos + ")");
-		
+	public static void generatePersonGraphics(double xPos, double yPos, SafetyMeasures safetyMeasures, InfectionType infectionType) {				
 		xPos *= 50;
 		xPos += 50;
 		yPos *= 50;
 		yPos += 50;
+		
 		if(infectionType == InfectionType.INFECTED) {
 			g2.setColor(Color.RED);
-			//System.out.println("Background set to red");
 		}else {
 			g2.setColor(Color.BLUE);
-			//System.out.println("Background set to blue");
 		}
 		if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
 			g2.fill(new Ellipse2D.Double(xPos - 6, yPos - 6, 12, 12));
-			System.out.println("Wearing Mask, draw eclipse");
 		}else {
 			/*g2.draw(new Polygon(new int[] {((int) xPos-20), (int) xPos, ((int) xPos + 20)}, 
 				new int[] {((int)yPos), ((int)yPos + 50), ((int)yPos)}, 3));*/
 			//g2.setColor(Color.red);
 			g2.fill(new Polygon(new int[] {((int) xPos-10), (int) xPos, ((int) xPos + 10)}, 
 				new int[] {((int)yPos + 7), ((int)yPos - 12), ((int)yPos + 7)}, 3));
-			//System.out.println("Triangle time!!!!");
 		}
 		if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
 			g2.setColor(new Color(203, 206, 212, 127));
-			//System.out.println("Here's ye backgroun colour");
 		}else {
 			g2.setColor(new Color(128, 255, 0, 127));
-			//System.out.println("More background colors for ya");
 		}
 		if(infectionType == InfectionType.INFECTED) {
 			if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
 				g2.fill(new Ellipse2D.Double(xPos - 9, yPos - 9, 18, 18));
-				//System.out.println("Should be drawn by now");
 			}else {
 				g2.fill(new Ellipse2D.Double(xPos - 12, yPos - 12, 24, 24));
-				//System.out.println("Or maybe now");
 			}
 		}else {
 			g2.fill(new Ellipse2D.Double(xPos, yPos, 0, 0));
-			//System.out.println("This is ye last shot matey!!!");
 		}
 	}
 	
 	public static void main(String args[]) {
 		WindowGenerator map = new WindowGenerator();
 		map.setVisible(true);
-		//System.out.println("Completed WinGen main method");
 	}
 }
