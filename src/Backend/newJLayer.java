@@ -19,7 +19,7 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 	ArrayList<newPeople> people = new ArrayList<newPeople>();
 	
 	public void initializePeople() {
-		for(int i = 0; i < 25; i++) {
+		for(int i = 0; i < 20; i++) {
 			int xPos = newPeople.genRanCoord();
 			int yPos = newPeople.genRanCoord();
 			int xDest = newPeople.genRanCoord();
@@ -28,7 +28,6 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[newPeople.randStatus()];
 			people.add(new newPeople(xPos, yPos, timer, infectionStatusValue, safetyStatus));
 			System.out.println("Location (" + xPos + ", " + yPos + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyStatus);
-			newPeople.printDest();
 		}
 	}
 	
@@ -74,9 +73,9 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 			}
 			if (infectionStatusValue == InfectionType.INFECTED) {
 				if (safetyStatus == SafetyMeasures.WEARING_MASK) {
-					g2.fill(new Ellipse2D.Double(xPos - 9, yPos - 9, 18, 18));
+					g2.fill(new Ellipse2D.Double(xPos - 9, yPos - 9, 18, 18));	//Gray circle
 				} else {
-					g2.fill(new Ellipse2D.Double(xPos - 12, yPos - 12, 24, 24));
+					g2.fill(new Ellipse2D.Double(xPos - 12, yPos - 12, 24, 24));	//Green circle
 				}
 			} else {
 				g2.fill(new Ellipse2D.Double(xPos, yPos, 0, 0));

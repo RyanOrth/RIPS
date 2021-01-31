@@ -1,5 +1,6 @@
 package Backend;
 
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -84,26 +85,28 @@ public class newPeople {
 	int xPos;
 	int yPos;
 	Timer timer; 
-	static int xDest; 
-	static int yDest; 
+	int xDest; 
+	int yDest; 
 	InfectionType infectstatus;
 	SafetyMeasures safetyStatus; 
 	public newPeople(int xPos, int yPos, Timer timer, InfectionType infectStatus, SafetyMeasures safetyStatus) {
-		this.xPos = xPos;
-		this.yPos = yPos;
+		this.xPos = 2/*xPos*/;
+		this.yPos = 2/*yPos*/;
 		this.timer = timer;
-		this.xDest = xDest;
-		this.yDest = yDest;
 		this.infectstatus = infectStatus; 
 		this.safetyStatus = safetyStatus; 
 		generateNewDest();
 	} 
 
 	public static int genRanCoord() {	//Generate random coordinate point
-		return (int)(Math.random() * 16);
+		//return (int)(Math.random() * 16);
+		SecureRandom c = new SecureRandom();
+		return c.nextInt(15);
 	}
 	public static int randStatus() {	//Used for infectionStatus and safetyMeasureStatus
-		return (int)(Math.random() * 2);
+		//return (int)(Math.random() * 2);
+		SecureRandom c = new SecureRandom();
+		return c.nextInt(2);
 	}
 	
 	public void generateNewDest() { 
@@ -111,33 +114,33 @@ public class newPeople {
 		this.yDest = this.genRanCoord(); 
 	}
 	
-	public static void printDest() {
-		System.out.println("(" + xDest + ", " + yDest + ")");
-	}
-	
 	public void move() {
-		Random ran = new Random(); 
+		//Random ran = new Random(); 
 		
-		if(ran.nextDouble() <= 0.5) { 
-			if((xDest - xPos < 0) && xPos > 0) { 
-				xPos--; 
+		if(randStatus() == 1) { 
+			if((this.xDest - this.xPos < 0) && this.xPos > 0) { 
+				this.xPos--; 
+				System.out.println("Moved Left");
 			}
 			
-			else if((xDest - xPos > 0) && xPos < 16) { 
-				xPos++; 
+			else if((this.xDest - this.xPos > 0) && this.xPos < 16) { 
+				this.xPos++; 
+				System.out.println("Moved Right");
 			}
 		} else {
-			if((yDest - yPos < 0) && yPos > 0) { 
-				yPos--; 
+			if((this.yDest - this.yPos < 0) && this.yPos > 0) { 
+				this.yPos--;
+				System.out.println("Moved Up");
 			}
 			 
-			else if((yDest - yPos > 0) && yPos < 16) { 
-				yPos++; 
+			else if((this.yDest - this.yPos > 0) && this.yPos < 16) { 
+				this.yPos++;
+				System.out.println("Moved Down");
 			}
 		}
 		
-		if(xPos == xDest && yPos == yDest) {
-			//generateNewDest();
+		if(this.xPos == this.xDest && this.yPos == this.yDest) {
+			generateNewDest();
 		}
 	}
 	
