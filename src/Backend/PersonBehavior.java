@@ -46,7 +46,6 @@ public class PersonBehavior extends JLabel implements ActionListener{
 		genDestination();
 		
 		timer = new Timer(100, this); 
-		int randomTime = (int) ((Math.random() * 3) + 1); 
 	}
 
 	public void setInfectionType(InfectionType infectionStatus) {
@@ -94,12 +93,6 @@ public class PersonBehavior extends JLabel implements ActionListener{
 		}
 	}
 
-	public void paint(Graphics g) { 
-		super.paint(g);
-		Graphics2D g1 = (Graphics2D) g; 
-		g1.fillOval(xPos - 6, yPos - 6, 12, 12);
-		g1.setColor(Color.blue);
-	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Random ran = new Random(); 
@@ -121,7 +114,6 @@ public class PersonBehavior extends JLabel implements ActionListener{
 				yPos--; 
 			}
 		}
-		repaint();
 	}
 
 
