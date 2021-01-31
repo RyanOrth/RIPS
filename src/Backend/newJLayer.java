@@ -24,16 +24,19 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 			int yPos = newPeople.genRanCoord();
 			int xDest = newPeople.genRanCoord();
 			int yDest = newPeople.genRanCoord();
-			InfectionType infectionStatusValue = newPeople.infectionStatus[((int)Math.random())];
-			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[((int)Math.random())];
+			InfectionType infectionStatusValue = newPeople.infectionStatus[newPeople.randStatus()];
+			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[newPeople.randStatus()];
 			people.add(new newPeople(xPos, yPos, timer, xDest, yDest, infectionStatusValue, safetyStatus));
 		}
 	}
 	
 	public newJLayer() {
+		NewPanel panel = new NewPanel();
 		this.setBounds(0, 0, 1200, 850);
+		this.add(panel);
 		timer = new Timer(10000, this); 
 		timer.start();
+		initializePeople();
 	}
 	
 	public void paint(Graphics g) { 
@@ -81,7 +84,6 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
+
 	}
 }

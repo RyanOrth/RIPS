@@ -7,14 +7,16 @@ public class newFrame extends JFrame{
 	public newFrame() {
 		panel = new NewPanel(); 
 		newJLayer layer = new newJLayer();
+
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(panel);
 		this.add(layer);
+
 		this.pack();
+		
 		this.setLocationRelativeTo(null);
 		this.setSize(1500, 1500);
-		this.setLayout(null);
 		this.setVisible(true);	
 	}
 	
