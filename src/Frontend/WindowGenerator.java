@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.util.List;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -40,6 +42,21 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	private Integer infectionStatus;
 	private Integer maskStatus;
 	Timer timer; 
+	public List<PersonBehavior> createPersonList() { 
+		for(int i = 0; i < 25; i++) {
+			int posX = SimLogic.genRanCoord();
+			int posY = SimLogic.genRanCoord();
+			
+			InfectionType infectionStatusValue = SimLogic.infectionStatus[(int)(Math.random() * 2)];
+			SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[(int)(Math.random() * 2)];
+			
+			SimLogic.person.add(new PersonBehavior(posX, posY, infectionStatusValue, safetyMeasuresValue, g2));
+			
+			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyMeasuresValue);
+		}
+	
+		return SimLogic.person; 
+	} 
 	
 	public WindowGenerator() {
 		timer = new Timer(100, this); 
@@ -122,17 +139,7 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	    	g2.draw(line);
 	    }
 	    
-	    for(int i = 0; i < 25; i++) {
-			int posX = SimLogic.genRanCoord();
-			int posY = SimLogic.genRanCoord();
-			
-			InfectionType infectionStatusValue = SimLogic.infectionStatus[(int)(Math.random() * 2)];
-			SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[(int)(Math.random() * 2)];
-			
-			SimLogic.person.add(new PersonBehavior(posX, posY, infectionStatusValue, safetyMeasuresValue, g2));
-			
-			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyMeasuresValue);
-		}
+	    
 	    
 	    //Line2D line = new Line2D.Double(25, 0, 25, 28);
 	    //g2.draw(line);
