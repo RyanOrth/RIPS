@@ -2,9 +2,9 @@ package Backend;
 
 import javax.swing.JFrame;
 
-public class newFrame extends JFrame{
+public class Main_Class extends JFrame{
 	NewPanel panel; 
-	public newFrame() {
+	public Main_Class() {
 		panel = new NewPanel(); 
 		newJLayer layer = new newJLayer();
 
@@ -21,7 +21,7 @@ public class newFrame extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		new newFrame();
+		new Main_Class();
 		
 	}
 	

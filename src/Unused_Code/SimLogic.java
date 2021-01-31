@@ -1,7 +1,4 @@
-package Backend;
-
-import Backend.PersonBehavior.*;
-import Frontend.WindowGenerator;
+package Unused_Code;
 
 import java.util.List;
 import java.awt.Graphics;
@@ -11,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+
+import Backend.InfectionType;
+import Unused_Code.PersonBehavior.*;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;

@@ -6,6 +6,8 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
+import Unused_Code.SafetyMeasures;
+
 public class newPeople {
 	public static InfectionType infectionStatus[] = {InfectionType.INFECTED, InfectionType.NOT_INFECTED};
 	public static InfectionType[] getInfectionStatus() {

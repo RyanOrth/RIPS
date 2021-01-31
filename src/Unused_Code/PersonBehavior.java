@@ -1,4 +1,4 @@
-package Backend;
+package Unused_Code;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,8 +14,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import Frontend.PersonGraphics;
-import Frontend.WindowGenerator;
+import Backend.InfectionType;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Frontend;
+package Unused_Code;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -6,7 +6,6 @@ import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
 
 import Backend.InfectionType;
-import Backend.SafetyMeasures;
 
 public class PersonGraphics {
 	

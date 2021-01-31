@@ -1,4 +1,4 @@
-package Frontend;
+package Unused_Code;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -23,11 +23,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 
 import Backend.InfectionType;
-import Backend.PersonBehavior;
-import Backend.SafetyMeasures;
-import Backend.SimLogic;
 import Backend.InfectionType;
-import Backend.SafetyMeasures;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

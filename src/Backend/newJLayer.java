@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import javax.swing.JLayeredPane;
 import javax.swing.Timer;
 
+import Unused_Code.SafetyMeasures;
+
 
 public class newJLayer extends JLayeredPane implements ActionListener{
 	Timer timer; 
