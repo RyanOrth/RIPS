@@ -1,5 +1,6 @@
 package Backend;
 
+import java.awt.Graphics2D;
 import java.util.TimerTask;
 import Frontend.PersonGraphics;
 
@@ -20,8 +21,8 @@ public class PersonBehavior extends TimerTask {
 	int xDest; // xPos destination
 	int yDest; // yPos destination
 
-	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus) {
-		setPos(xPos, yPos);
+	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus, Graphics2D paint) {
+		setPos(xPos, yPos, paint);
 		setInfectionType(infectionStatus);
 		setSafetyMeasures(safetyMeasureStatus);
 		genDestination();
@@ -35,11 +36,11 @@ public class PersonBehavior extends TimerTask {
 		this.safetyMeasureStatus = safetyMeasureStatus;
 	}
 
-	public void setPos(int xPos, int yPos) {
+	public void setPos(int xPos, int yPos, Graphics2D paint) {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		// Update the shape position here
-		generatePersonShape(xPos, yPos, this.safetyMeasureStatus);
+		PersonGraphics.generatePersonGraphics((double) xPos,(double) yPos, this.safetyMeasureStatus, this.infectionStatus, paint);
 	}
 
 	public void genDestination() {
