@@ -80,6 +80,14 @@ public class newPeople {
 		this.safetyStatus = safetyStatus;
 	}
 
+	public void getContactedPersonInfectStatus(InfectionType infectstatus) {
+		this.contactedPersonInfectStatus = infectstatus;
+	}
+	
+	public void getContactedPersonSafetyStatus(InfectionType safetyStatus) {
+		this.contactedPersonInfectStatus = safetyStatus;
+	}
+	
 	public static SafetyMeasures safetyMeasureStatus[] = {SafetyMeasures.NO_MASK, SafetyMeasures.WEARING_MASK};
 	
 	int xPos;
@@ -89,6 +97,9 @@ public class newPeople {
 	int yDest; 
 	InfectionType infectstatus;
 	SafetyMeasures safetyStatus; 
+	
+	InfectionType contactedPersonInfectStatus;
+	SafetyMeasures contactedPersonSafetyStatus;
 	public newPeople(int xPos, int yPos, Timer timer, InfectionType infectStatus, SafetyMeasures safetyStatus) {
 		this.xPos = 2/*xPos*/;
 		this.yPos = 2/*yPos*/;
@@ -140,11 +151,14 @@ public class newPeople {
 	
 	private void checkIntersect() {
 		boolean shapeIntersects = true;
+		SecureRandom c = new SecureRandom();
+		int percentChanceOfInfection = c.nextInt(99);
 		if (shapeIntersects) {
 			switch (this.infectstatus) {
 			case INFECTED:
 				switch (this.safetyStatus) {
 				case NO_MASK:
+					
 					break;
 				case WEARING_MASK:
 					break;

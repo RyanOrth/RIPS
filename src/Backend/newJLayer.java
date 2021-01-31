@@ -7,6 +7,7 @@ import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
+import java.util.List;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
@@ -16,10 +17,10 @@ import javax.swing.Timer;
 public class newJLayer extends JLayeredPane implements ActionListener{
 	Timer timer; 
 	
-	ArrayList<newPeople> people = new ArrayList<newPeople>();
+	List<newPeople> people = new ArrayList<newPeople>();
 	
 	public void initializePeople() {
-		for(int i = 0; i < 20; i++) {
+		for(int i = 0; i < 5; i++) {
 			int xPos = newPeople.genRanCoord();
 			int yPos = newPeople.genRanCoord();
 			int xDest = newPeople.genRanCoord();
