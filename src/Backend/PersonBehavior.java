@@ -1,11 +1,18 @@
 package Backend;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.JLabel;
+import javax.swing.Timer;
 
 import Frontend.PersonGraphics;
 import Frontend.WindowGenerator;
@@ -13,7 +20,7 @@ import Frontend.WindowGenerator;
 import java.util.Scanner;
 
 
-public class PersonBehavior implements Runnable{
+public class PersonBehavior extends JLabel implements ActionListener{
 	/*public enum InfectionType {
 		INFECTED, NOT_INFECTED,
 	}
@@ -26,33 +33,11 @@ public class PersonBehavior implements Runnable{
 	SafetyMeasures safetyMeasureStatus;
 	int xPos;
 	int yPos;
-
+	Timer timer; 
 	int xDest; // xPos destination
 	int yDest; // yPos destination
 	
-	static ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-	@Override
-	public void run() {
-		Random ran = new Random(); 
-		
-		if(ran.nextDouble() <= 0.5) { 
-			if(xDest - xPos < 0) { 
-				xDest++; 
-			}
-			
-			if(xDest - xPos > 0) { 
-				xDest--; 
-			}
-		} else {
-			if(yDest - yPos > 0) { 
-				yPos++; 
-			}
-			 
-			if(yDest - yPos < 0) { 
-				yPos--; 
-			}
-		}
-	}
+
 	
 	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus, Graphics2D paint) {
 		setInfectionType(infectionStatus);
@@ -60,8 +45,8 @@ public class PersonBehavior implements Runnable{
 		setPos(xPos, yPos, paint);
 		genDestination();
 		
+		timer = new Timer(100, this); 
 		int randomTime = (int) ((Math.random() * 3) + 1); 
-		executor.scheduleAtFixedRate(this, 2, randomTime, TimeUnit.SECONDS); 
 	}
 
 	public void setInfectionType(InfectionType infectionStatus) {
@@ -109,6 +94,36 @@ public class PersonBehavior implements Runnable{
 		}
 	}
 
-	
+	public void paint(Graphics g) { 
+		super.paint(g);
+		Graphics2D g1 = (Graphics2D) g; 
+		g1.fillOval(xPos - 6, yPos - 6, 12, 12);
+		g1.setColor(Color.blue);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Random ran = new Random(); 
+		
+		if(ran.nextDouble() <= 0.5) { 
+			if(xDest - xPos < 0) { 
+				xDest++; 
+			}
+			
+			if(xDest - xPos > 0) { 
+				xDest--; 
+			}
+		} else {
+			if(yDest - yPos > 0) { 
+				yPos++; 
+			}
+			 
+			if(yDest - yPos < 0) { 
+				yPos--; 
+			}
+		}
+		repaint();
+	}
+
+
 
 }
