@@ -20,7 +20,7 @@ import Frontend.WindowGenerator;
 import java.util.Scanner;
 
 
-public class PersonBehavior extends JLabel implements ActionListener{
+public class PersonBehavior implements ActionListener{
 	/*public enum InfectionType {
 		INFECTED, NOT_INFECTED,
 	}
@@ -45,7 +45,8 @@ public class PersonBehavior extends JLabel implements ActionListener{
 		setPos(xPos, yPos, paint);
 		genDestination();
 		
-		timer = new Timer(100, this); 
+		timer = new Timer(10, this);
+		timer.start();
 	}
 
 	public void setInfectionType(InfectionType infectionStatus) {
@@ -93,27 +94,17 @@ public class PersonBehavior extends JLabel implements ActionListener{
 		}
 	}
 
-<<<<<<< HEAD
-	public void paint(Graphics g) { 
-		System.out.println("IN PAINT METHOD!!!");
-		super.paint(g);
-		Graphics2D g1 = (Graphics2D) g; 
-		g1.fillOval(xPos - 6, yPos - 6, 12, 12);
-		g1.setColor(Color.YELLOW);
-	}
-=======
->>>>>>> refs/remotes/origin/main
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Random ran = new Random(); 
 		
 		if(ran.nextDouble() <= 0.5) { 
 			if(xDest - xPos < 0) { 
-				xDest++; 
+				xPos++; 
 			}
 			
 			if(xDest - xPos > 0) { 
-				xDest--; 
+				xPos--; 
 			}
 		} else {
 			if(yDest - yPos > 0) { 

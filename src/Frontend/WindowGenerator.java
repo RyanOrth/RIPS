@@ -99,13 +99,6 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	    setMinimumSize(new Dimension(1200, 850));
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==timer) { 
-			repaint(); 
-		}
-		
-	}
 	
 	public void clearEntry() {
 		peopleField.setText("");
@@ -180,6 +173,13 @@ public class WindowGenerator extends JFrame implements ActionListener{
 			}
 		}else {
 			g2.fill(new Ellipse2D.Double(xPos, yPos, 0, 0));
+		}
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==timer) { 
+			repaint(); 
 		}
 	}
 	
