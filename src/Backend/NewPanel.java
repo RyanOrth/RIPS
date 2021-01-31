@@ -18,12 +18,12 @@ public class NewPanel extends JPanel{
 		//Graphics2D g2 = (Graphics2D) g;
 		g2 = (Graphics2D) g;
 		
-	    for(int i=50; i <= 600; i+=50) {
-	    	Line2D line = new Line2D.Double(i, 600, i, 50);
+	    for(int i=50; i <= 800; i+=50) {
+	    	Line2D line = new Line2D.Double(i, 800, i, 50);
 	    	g2.draw(line);
 	    }
-	    for(int v= 600; v >=50 ; v-=50) {
-	    	Line2D line= new Line2D.Double(50, v, 600, v);
+	    for(int v= 800; v >=50 ; v-=50) {
+	    	Line2D line= new Line2D.Double(50, v, 800, v);
 	    	g2.draw(line);
 	    }
 	}

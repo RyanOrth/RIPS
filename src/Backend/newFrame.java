@@ -16,4 +16,8 @@ public class newFrame extends JFrame{
 		this.add(layer);
 	}
 	
+	public static void main(String args[]) {
+		new newFrame();
+	}
+	
 }
