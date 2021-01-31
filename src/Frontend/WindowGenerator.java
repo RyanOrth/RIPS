@@ -12,11 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
-<<<<<<< HEAD
 import java.util.List;
-=======
-import java.awt.image.BufferedImage;
->>>>>>> branch 'main' of https://github.com/RyanOrth/RIPS
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -147,23 +143,6 @@ public class WindowGenerator extends JFrame implements ActionListener{
 		// Graphics2D g2 = (Graphics2D) g;
 		g2 = (Graphics2D) g;
 		
-<<<<<<< HEAD
-	    for(int i=50; i <= 800; i+=50) {
-	    	Line2D line = new Line2D.Double(i, 800, i, 50);
-	    	g2.draw(line);
-	    }
-	    for(int v=800; v >=50 ; v-=50) {
-	    	Line2D line= new Line2D.Double(50, v, 800, v);
-	    	g2.draw(line);
-	    }
-	    
-	    
-	    
-	    //Line2D line = new Line2D.Double(25, 0, 25, 28);
-	    //g2.draw(line);
-	    
-		//generatePersonGraphics(2,2, SafetyMeasures.NO_MASK, InfectionType.INFECTED);
-=======
 		for (int i = 50; i <= 800; i += 50) {
 			Line2D line = new Line2D.Double(i, 800, i, 50);
 			g2.draw(line);
@@ -193,7 +172,6 @@ public class WindowGenerator extends JFrame implements ActionListener{
 		// generatePersonGraphics(2,2, SafetyMeasures.NO_MASK, InfectionType.INFECTED);
 		
 		System.out.println("Skipped runner");
->>>>>>> branch 'main' of https://github.com/RyanOrth/RIPS
 	}
 	}
 
