@@ -1,5 +1,7 @@
 package Frontend;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,6 +14,7 @@ import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.BoxLayout;
 
 import Backend.InfectionType;
 import Backend.PersonBehavior;
@@ -20,6 +23,7 @@ import Backend.SimLogic;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Backend.SimLogic.*;
 
@@ -33,15 +37,17 @@ public class WindowGenerator extends JFrame {
 	
 	public WindowGenerator() {
 		JPanel panel = new JPanel();
+		JPanel inputPanel = new JPanel();
 		JButton submit = new JButton("Submit");
-		submit.setBounds(1000, 400, 20, 20);
-		peopleField.setBounds(900, 100, 40, 20);
-		infectionField.setBounds(920, 100, 40, 20);
-		maskField.setBounds(940, 100, 40, 20);
-		panel.add(submit);
-		panel.add(peopleField);
-		panel.add(infectionField);
-		panel.add(maskField);
+		submit.setSize(10, 40);
+		peopleField.setSize(10, 40);
+		infectionField.setSize(10, 40);
+		maskField.setSize(10, 40);
+		inputPanel.add(peopleField);
+		inputPanel.add(infectionField);
+		inputPanel.add(maskField);
+		inputPanel.add(submit);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -49,24 +55,29 @@ public class WindowGenerator extends JFrame {
 					if(infectionField.getText().equals("infected") || infectionField.getText().equals("not infected")) {
 						infectionStatus = infectionField.getText();
 					} else {
+						JOptionPane.showMessageDialog(null, "Please only enter \"infected\" or \"not infected\" for infection status.");
 						clearEntry();
 						return;
 					}
 					if(maskField.getText().equals("mask") || maskField.getText().equals("no mask")) {
 						maskStatus = maskField.getText();
 					} else {
+						JOptionPane.showMessageDialog(null, "Please only enter \"mask\" or \"no mask\" for mask status.");
 						clearEntry();
 						return;
 					}
+					System.out.println(numPeople + "\n" + infectionStatus + "\n" + maskStatus);
 				} catch (IllegalArgumentException j) {
+					JOptionPane.showMessageDialog(null, "Please only enter a numerical value for number of people here.");
 					clearEntry();
 					return;
 				}
-				System.out.println(numPeople + "\n" + infectionStatus + "\n" + maskStatus);
 			}
 		});
-	    getContentPane().add(panel);
-	    setMinimumSize(new Dimension(1100, 700));
+	    Container contentPane = getContentPane();
+	    contentPane.add(panel, BorderLayout.CENTER);
+	    contentPane.add(inputPanel, BorderLayout.PAGE_END);
+	    setMinimumSize(new Dimension(850, 700));
 	}
 	
 	public void clearEntry() {
