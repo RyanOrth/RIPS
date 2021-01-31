@@ -1,6 +1,7 @@
 package Backend;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.Timer;
 
@@ -83,8 +84,8 @@ public class newPeople {
 	int xPos;
 	int yPos;
 	Timer timer; 
-	int xDest; 
-	int yDest; 
+	static int xDest; 
+	static int yDest; 
 	InfectionType infectstatus;
 	SafetyMeasures safetyStatus; 
 	public newPeople(int xPos, int yPos, Timer timer, int xDest, int yDest, InfectionType infectStatus, SafetyMeasures safetyStatus) {
@@ -109,6 +110,35 @@ public class newPeople {
 		this.yDest = this.genRanCoord(); 
 	}
 	
+	public static void printDest() {
+		System.out.println("(" + xDest + ", " + yDest + ")");
+	}
+	
+	public void move() {
+		Random ran = new Random(); 
+		
+		if(ran.nextDouble() <= 0.5) { 
+			if((xDest - xPos < 0) && xPos > 0) { 
+				xPos--; 
+			}
+			
+			else if((xDest - xPos > 0) && xPos < 16) { 
+				xPos++; 
+			}
+		} else {
+			if((yDest - yPos > 0) && yPos > 0) { 
+				yPos--; 
+			}
+			 
+			else if((yDest - yPos < 0) && yPos < 16) { 
+				yPos++; 
+			}
+		}
+		
+		if(xPos == xDest && yPos == yDest) {
+			generateNewDest();
+		}
+	}
 	
 	
 

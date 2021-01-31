@@ -27,6 +27,8 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 			InfectionType infectionStatusValue = newPeople.infectionStatus[newPeople.randStatus()];
 			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[newPeople.randStatus()];
 			people.add(new newPeople(xPos, yPos, timer, xDest, yDest, infectionStatusValue, safetyStatus));
+			System.out.println("Location (" + xPos + ", " + yPos + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyStatus);
+			newPeople.printDest();
 		}
 	}
 	
@@ -34,7 +36,7 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 		NewPanel panel = new NewPanel();
 		this.setBounds(0, 0, 1200, 850);
 		this.add(panel);
-		timer = new Timer(10000, this); 
+		timer = new Timer(100, this); 
 		timer.start();
 		initializePeople();
 	}
@@ -84,6 +86,9 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		for(newPeople person : people) {
+			person.move();
+		}
+		repaint();
 	}
 }
