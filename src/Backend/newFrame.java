@@ -10,10 +10,12 @@ public class newFrame extends JFrame{
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(panel);
+		this.add(layer);
 		this.pack();
 		this.setLocationRelativeTo(null);
+		this.setSize(1500, 1500);
+		this.setLayout(null);
 		this.setVisible(true);	
-		this.add(layer);
 	}
 	
 	public static void main(String args[]) {

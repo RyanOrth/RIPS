@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 public class NewPanel extends JPanel{
 
 	public NewPanel() {
+		this.setBounds(0, 0, 1200, 800);
 	}
 	
 	public void paint(Graphics g) {
@@ -26,18 +27,5 @@ public class NewPanel extends JPanel{
 	    	Line2D line= new Line2D.Double(50, v, 800, v);
 	    	g2.draw(line);
 	    }
-	}
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame(); 
-		NewPanel panel =  new NewPanel(); 
-		frame.setLayout(null);
-		frame.add(panel);
-		panel.setBounds(0, 0, 1200, 800);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		frame.setSize(1500, 1500);
-		
 	}
 }
