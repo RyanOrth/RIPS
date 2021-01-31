@@ -17,9 +17,9 @@ import java.awt.Graphics2D;
 
 public class SimLogic extends JFrame {
 
-	static List<PersonBehavior> person = new ArrayList<PersonBehavior>();
-	static InfectionType infectionStatus[] = {InfectionType.INFECTED, InfectionType.NOT_INFECTED};
-	static SafetyMeasures safetyMeasureStatus[] = {SafetyMeasures.NO_MASK, SafetyMeasures.WEARING_MASK};
+	public static List<PersonBehavior> person = new ArrayList<PersonBehavior>();
+	public static InfectionType infectionStatus[] = {InfectionType.INFECTED, InfectionType.NOT_INFECTED};
+	public static SafetyMeasures safetyMeasureStatus[] = {SafetyMeasures.NO_MASK, SafetyMeasures.WEARING_MASK};
 
 	public static Graphics2D g2;
 	
@@ -39,7 +39,7 @@ public class SimLogic extends JFrame {
 		}
 	}*/
 	
-	public void paint(Graphics g) {
+	/*public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
 	    
@@ -55,7 +55,7 @@ public class SimLogic extends JFrame {
 			
 			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyMeasuresValue);
 		}
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -80,7 +80,7 @@ public class SimLogic extends JFrame {
 		return (int)(Math.random() * 16);
 	}
 	
-	private static int randStatus() {	//Used for infectionStatus and safetyMeasureStatus
+	public static int randStatus() {	//Used for infectionStatus and safetyMeasureStatus
 		return (int)(Math.random() * 2);
 	}
 }
