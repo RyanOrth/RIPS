@@ -84,8 +84,8 @@ public class newPeople {
 		this.contactedPersonInfectStatus = infectstatus;
 	}
 	
-	public void getContactedPersonSafetyStatus(InfectionType safetyStatus) {
-		this.contactedPersonInfectStatus = safetyStatus;
+	public void getContactedPersonSafetyStatus(SafetyMeasures safetyMeasures) {
+		this.contactedPersonSafetyStatus = safetyMeasures;
 	}
 	
 	public static SafetyMeasures safetyMeasureStatus[] = {SafetyMeasures.NO_MASK, SafetyMeasures.WEARING_MASK};
@@ -166,28 +166,57 @@ public class newPeople {
 		if(this.getxPos() == other.getxPos() && this.getyPos() == other.getyPos()) {
 			shapeIntersects = true;
 			System.out.println("intersected");
+			this.getContactedPersonInfectStatus(other.getInfectstatus());
+			this.getContactedPersonSafetyStatus(other.getSafetyStatus());
 		}
 		SecureRandom c = new SecureRandom();
 		int percentChanceOfInfection = c.nextInt(99);
 
 		if (shapeIntersects) {
-			switch (this.infectstatus) {
+			switch (this.contactedPersonInfectStatus) {
 			case INFECTED:
-				switch (this.safetyStatus) {
+				switch (this.contactedPersonSafetyStatus) {
 				case NO_MASK:
-					
+					if(this.safetyStatus == SafetyMeasures.NO_MASK) {
+						if(percentChanceOfInfection < 99) {
+							this.setInfectstatus(InfectionType.INFECTED);
+						}
+					} else {
+						if(percentChanceOfInfection < 79) {
+							this.setInfectstatus(InfectionType.INFECTED);
+						}
+					}
 					break;
 				case WEARING_MASK:
+					if(this.safetyStatus == SafetyMeasures.NO_MASK) {
+						if(percentChanceOfInfection < 40) {
+							this.setInfectstatus(InfectionType.INFECTED);
+						}
+					} else {
+						if(percentChanceOfInfection < 20) {
+							this.setInfectstatus(InfectionType.INFECTED);
+						}
+					}
 					break;
 				}
 				break;
 			case NOT_INFECTED:
-				switch (this.safetyStatus) {
+				/*switch (this.contactedPersonSafetyStatus) {
 				case NO_MASK:
+					if(this.safetyStatus == SafetyMeasures.NO_MASK) {
+						//Nothing
+					} else {
+						
+					}
 					break;
 				case WEARING_MASK:
+					if(this.safetyStatus == SafetyMeasures.NO_MASK) {
+						
+					} else {
+						
+					}
 					break;
-				}
+				}*/
 				break;
 			}
 		}
