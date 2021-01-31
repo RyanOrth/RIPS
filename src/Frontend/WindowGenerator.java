@@ -105,7 +105,7 @@ public class WindowGenerator extends JFrame implements ActionListener{
 		});
 		doneButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				readyToRun = true;
+				//readyToRun = true;
 				System.out.println("done");
 			}
 		});
