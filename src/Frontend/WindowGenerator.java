@@ -14,6 +14,7 @@ import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
@@ -28,7 +29,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class WindowGenerator extends JFrame {
+public class WindowGenerator extends JFrame implements ActionListener{
 	private JTextField peopleField = new JTextField("");
 	private JTextField infoForPeopleField = new JTextField("Enter total number of people below:");
 	private JTextField infectionField = new JTextField("");
@@ -41,8 +42,11 @@ public class WindowGenerator extends JFrame {
 	private Integer infectionStatus;
 	private Integer maskStatus;
 	private boolean readyToRun;
-
+	Timer timer; 
+	
 	public WindowGenerator() {
+		timer = new Timer(100, this); 
+		timer.start(); 
 		JPanel panel = new JPanel();
 		JPanel inputPanel = new JPanel();
 	//	JButton submit = new JButton("Submit this round of people");
@@ -107,7 +111,7 @@ public class WindowGenerator extends JFrame {
 		contentPane.add(inputPanel, BorderLayout.EAST);
 		setMinimumSize(new Dimension(1200, 850));
 	}
-
+	
 	public void clearEntry() {
 		peopleField.setText("");
 		infectionField.setText("");
@@ -116,7 +120,7 @@ public class WindowGenerator extends JFrame {
 
 	public static Graphics2D g2;
 
-	/*public void paint(Graphics g) {
+	public void paint(Graphics g) {
 		super.paint(g);
 		// Graphics2D g2 = (Graphics2D) g;
 		g2 = (Graphics2D) g;
@@ -131,7 +135,7 @@ public class WindowGenerator extends JFrame {
 			g2.draw(line);
 		}
 
-		if(readyToRun == null || readyToRun) {
+		if(readyToRun) {
 		for (int i = 0; i < 25; i++) {
 			int posX = SimLogic.genRanCoord();
 			int posY = SimLogic.genRanCoord();
@@ -151,7 +155,7 @@ public class WindowGenerator extends JFrame {
 		// generatePersonGraphics(2,2, SafetyMeasures.NO_MASK, InfectionType.INFECTED);
 		}
 		System.out.println("Skipped runner");
-	}*/
+	}
 
 	public static void generatePersonGraphics(double xPos, double yPos, SafetyMeasures safetyMeasures,
 			InfectionType infectionType) {
@@ -192,70 +196,16 @@ public class WindowGenerator extends JFrame {
 		}
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==timer) { 
+			repaint(); 
+		}
+	}
+	
 	public static void main(String args[]) {
 		WindowGenerator map = new WindowGenerator();
 		map.setVisible(true);
 	}
-	
-	public void paint(Graphics g) {
-		super.paint(g);
-		// Graphics2D g2 = (Graphics2D) g;
-		g2 = (Graphics2D) g;
 
-		for (int i = 50; i <= 800; i += 50) {
-			Line2D line = new Line2D.Double(i, 800, i, 50);
-			g2.draw(line);
-		}
-		
-		for (int v = 800; v >= 50; v -= 50) {
-			Line2D line = new Line2D.Double(50, v, 800, v);
-			g2.draw(line);
-		}
-
-		//while(!readyToRun) {
-			WindowGenerator demo = new WindowGenerator();
-			demo.setVisible(true);
-			/*submit.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					try {
-						numPeople = Integer.valueOf(peopleField.getText());
-						infectionStatus = Integer.valueOf(infectionField.getText());
-						maskStatus = Integer.valueOf(maskField.getText());
-						System.out.println(numPeople + "\n" + infectionStatus + "\n" + maskStatus);
-						clearEntry();
-					} catch (IllegalArgumentException j) {
-						JOptionPane.showMessageDialog(null, "Please only enter a numerical value for these entries.");
-						clearEntry();
-						return;
-					}
-				}
-			});
-			doneButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					readyToRun = true;
-					System.out.println("done");
-				}
-			});*/
-	//	}
-		if(readyToRun) {
-		for (int i = 0; i < 25; i++) {
-			int posX = SimLogic.genRanCoord();
-			int posY = SimLogic.genRanCoord();
-
-			InfectionType infectionStatusValue = SimLogic.infectionStatus[(int) (Math.random() * 2)];
-			SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[(int) (Math.random() * 2)];
-
-			SimLogic.person.add(new PersonBehavior(posX, posY, infectionStatusValue, safetyMeasuresValue, g2));
-
-			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue
-					+ ", Safety Measures: " + safetyMeasuresValue);
-		}
-
-		// Line2D line = new Line2D.Double(25, 0, 25, 28);
-		// g2.draw(line);
-
-		// generatePersonGraphics(2,2, SafetyMeasures.NO_MASK, InfectionType.INFECTED);
-		}
-		System.out.println("Skipped runner");
-	}
 }
