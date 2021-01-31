@@ -5,8 +5,8 @@ import java.awt.Polygon;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
-import Backend.PersonBehavior.InfectionType;
-import Backend.PersonBehavior.SafetyMeasures;
+import Backend.InfectionType;
+import Backend.SafetyMeasures;
 
 public class PersonGraphics {
 	private Shape personShape;

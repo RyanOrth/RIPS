@@ -1,15 +1,16 @@
 package Backend;
 
 import java.util.TimerTask;
+import Frontend.PersonGraphics;
 
 public class PersonBehavior extends TimerTask {
-	public enum InfectionType {
+	/*public enum InfectionType {
 		INFECTED, NOT_INFECTED,
 	}
 
 	public enum SafetyMeasures {
 		NO_MASK, WEARING_MASK,
-	}
+	}*/
 
 	InfectionType infectionStatus;
 	SafetyMeasures safetyMeasureStatus;
@@ -38,6 +39,7 @@ public class PersonBehavior extends TimerTask {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		// Update the shape position here
+		generatePersonShape(xPos, yPos, this.safetyMeasureStatus);
 	}
 
 	public void genDestination() {
