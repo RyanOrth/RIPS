@@ -95,10 +95,11 @@ public class PersonBehavior extends JLabel implements ActionListener{
 	}
 
 	public void paint(Graphics g) { 
+		System.out.println("IN PAINT METHOD!!!");
 		super.paint(g);
 		Graphics2D g1 = (Graphics2D) g; 
 		g1.fillOval(xPos - 6, yPos - 6, 12, 12);
-		g1.setColor(Color.blue);
+		g1.setColor(Color.YELLOW);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
