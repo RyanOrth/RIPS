@@ -129,18 +129,30 @@ public class newPeople {
 		if(randStatus() == 1) { 
 			if((this.xDest - this.xPos < 0) && this.xPos > 0) { 
 				this.xPos--; 
+				for(int i = 0; i < newJLayer.people.size(); i++) {
+					checkIntersect(newJLayer.people.get(i));
+				}
 			}
 			
 			else if((this.xDest - this.xPos > 0) && this.xPos < 16) { 
 				this.xPos++; 
+				for(int i = 0; i < newJLayer.people.size(); i++) {
+					checkIntersect(newJLayer.people.get(i));
+				}
 			}
 		} else {
 			if((this.yDest - this.yPos < 0) && this.yPos > 0) { 
 				this.yPos--;
+				for(int i = 0; i < newJLayer.people.size(); i++) {
+					checkIntersect(newJLayer.people.get(i));
+				}
 			}
 			 
 			else if((this.yDest - this.yPos > 0) && this.yPos < 16) { 
 				this.yPos++;
+				for(int i = 0; i < newJLayer.people.size(); i++) {
+					checkIntersect(newJLayer.people.get(i));
+				}
 			}
 		}
 		
@@ -149,10 +161,15 @@ public class newPeople {
 		}
 	}
 	
-	private void checkIntersect() {
-		boolean shapeIntersects = true;
+	private void checkIntersect(newPeople other) {
+		boolean shapeIntersects = false;
+		if(this.getxPos() == other.getxPos() && this.getyPos() == other.getyPos()) {
+			shapeIntersects = true;
+			System.out.println("intersected");
+		}
 		SecureRandom c = new SecureRandom();
 		int percentChanceOfInfection = c.nextInt(99);
+
 		if (shapeIntersects) {
 			switch (this.infectstatus) {
 			case INFECTED:
