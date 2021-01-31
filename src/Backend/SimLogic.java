@@ -63,6 +63,21 @@ public class SimLogic extends JFrame {
 		WindowGenerator.main(args);
 		
 		System.out.println("Back in SimLogin");
+		
+		/*if(WindowGenerator.readyToRun) {
+			for (int i = 0; i < 25; i++) {
+				int posX = SimLogic.genRanCoord();
+				int posY = SimLogic.genRanCoord();
+
+				InfectionType infectionStatusValue = SimLogic.infectionStatus[(int) (Math.random() * 2)];
+				SafetyMeasures safetyMeasuresValue = SimLogic.safetyMeasureStatus[(int) (Math.random() * 2)];
+
+				SimLogic.person.add(new PersonBehavior(posX, posY, infectionStatusValue, safetyMeasuresValue, g2));
+
+				System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue
+						+ ", Safety Measures: " + safetyMeasuresValue);
+			}
+		}*/
 		/*for(int i = 0; i < 25; i++) {
 			int posX = genRanCoord();
 			int posY = genRanCoord();
