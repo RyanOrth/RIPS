@@ -135,7 +135,7 @@ public class WindowGenerator extends JFrame implements ActionListener{
 			g2.draw(line);
 		}
 
-		if(readyToRun) {
+		//if(readyToRun) {
 		for (int i = 0; i < 25; i++) {
 			int posX = SimLogic.genRanCoord();
 			int posY = SimLogic.genRanCoord();
@@ -147,7 +147,7 @@ public class WindowGenerator extends JFrame implements ActionListener{
 
 			System.out.println("Location (" + posX + ", " + posY + "), Infection Type: " + infectionStatusValue
 					+ ", Safety Measures: " + safetyMeasuresValue);
-		}
+		//}
 
 		// Line2D line = new Line2D.Double(25, 0, 25, 28);
 		// g2.draw(line);
@@ -199,7 +199,7 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==timer) { 
-			repaint(); 
+			//repaint(); 
 		}
 	}
 	
