@@ -14,6 +14,7 @@ import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 
 import Backend.InfectionType;
@@ -44,6 +45,7 @@ public class WindowGenerator extends JFrame {
 		infectionField.setSize(10, 40);
 		maskField.setSize(10, 40);
 		inputPanel.add(peopleField);
+		inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
 		inputPanel.add(infectionField);
 		inputPanel.add(maskField);
 		inputPanel.add(submit);
@@ -76,8 +78,8 @@ public class WindowGenerator extends JFrame {
 		});
 	    Container contentPane = getContentPane();
 	    contentPane.add(panel, BorderLayout.CENTER);
-	    contentPane.add(inputPanel, BorderLayout.PAGE_END);
-	    setMinimumSize(new Dimension(850, 700));
+	    contentPane.add(inputPanel, BorderLayout.EAST);
+	    setMinimumSize(new Dimension(1100, 700));
 	}
 	
 	public void clearEntry() {
