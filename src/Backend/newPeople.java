@@ -88,7 +88,7 @@ public class newPeople {
 	static int yDest; 
 	InfectionType infectstatus;
 	SafetyMeasures safetyStatus; 
-	public newPeople(int xPos, int yPos, Timer timer, int xDest, int yDest, InfectionType infectStatus, SafetyMeasures safetyStatus) {
+	public newPeople(int xPos, int yPos, Timer timer, InfectionType infectStatus, SafetyMeasures safetyStatus) {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.timer = timer;
@@ -96,6 +96,7 @@ public class newPeople {
 		this.yDest = yDest;
 		this.infectstatus = infectStatus; 
 		this.safetyStatus = safetyStatus; 
+		generateNewDest();
 	} 
 
 	public static int genRanCoord() {	//Generate random coordinate point
@@ -126,17 +127,17 @@ public class newPeople {
 				xPos++; 
 			}
 		} else {
-			if((yDest - yPos > 0) && yPos > 0) { 
+			if((yDest - yPos < 0) && yPos > 0) { 
 				yPos--; 
 			}
 			 
-			else if((yDest - yPos < 0) && yPos < 16) { 
+			else if((yDest - yPos > 0) && yPos < 16) { 
 				yPos++; 
 			}
 		}
 		
 		if(xPos == xDest && yPos == yDest) {
-			generateNewDest();
+			//generateNewDest();
 		}
 	}
 	

@@ -19,14 +19,14 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 	ArrayList<newPeople> people = new ArrayList<newPeople>();
 	
 	public void initializePeople() {
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < 25; i++) {
 			int xPos = newPeople.genRanCoord();
 			int yPos = newPeople.genRanCoord();
 			int xDest = newPeople.genRanCoord();
 			int yDest = newPeople.genRanCoord();
 			InfectionType infectionStatusValue = newPeople.infectionStatus[newPeople.randStatus()];
 			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[newPeople.randStatus()];
-			people.add(new newPeople(xPos, yPos, timer, xDest, yDest, infectionStatusValue, safetyStatus));
+			people.add(new newPeople(xPos, yPos, timer, infectionStatusValue, safetyStatus));
 			System.out.println("Location (" + xPos + ", " + yPos + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyStatus);
 			newPeople.printDest();
 		}
