@@ -8,6 +8,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import Frontend.PersonGraphics;
+import Frontend.WindowGenerator;
+
+import java.util.Scanner;
 
 
 public class PersonBehavior implements Runnable{
@@ -52,6 +55,7 @@ public class PersonBehavior implements Runnable{
 	}
 	
 	public PersonBehavior(int xPos, int yPos, InfectionType infectionStatus, SafetyMeasures safetyMeasureStatus, Graphics2D paint) {
+		System.out.println("Inside person behavior constructor before setPos()");
 		setPos(xPos, yPos, paint);
 		setInfectionType(infectionStatus);
 		setSafetyMeasures(safetyMeasureStatus);
@@ -73,7 +77,8 @@ public class PersonBehavior implements Runnable{
 		this.xPos = xPos;
 		this.yPos = yPos;
 		// Update the shape position here
-		PersonGraphics.generatePersonGraphics((double) xPos,(double) yPos, this.safetyMeasureStatus, this.infectionStatus, paint);
+		System.out.println("In setPos method before person graphics");
+		WindowGenerator.generatePersonGraphics((double) xPos,(double) yPos, this.safetyMeasureStatus, this.infectionStatus);
 	}
 
 	public void genDestination() {

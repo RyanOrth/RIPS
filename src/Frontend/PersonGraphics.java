@@ -11,10 +11,13 @@ import Backend.SafetyMeasures;
 public class PersonGraphics {
 	
 	public static void generatePersonGraphics(double xPos, double yPos, SafetyMeasures safetyMeasures, InfectionType infectionType, Graphics2D paint) {
+		System.out.println("In generate person graphics");
 		if(infectionType == InfectionType.INFECTED) {
 			paint.setBackground(Color.RED);
+			System.out.println("Background set to red");
 		}else {
 			paint.setBackground(Color.BLUE);
+			System.out.println("Background set to blue");
 		}
 		if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
 			paint.draw(new Ellipse2D.Double(xPos, yPos, 6, 6));
@@ -23,9 +26,9 @@ public class PersonGraphics {
 				new int[] {((int)yPos + 3), (int)yPos, ((int)yPos-3)}, 3));
 		}
 		if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
-			paint.setBackground(new Color((float) 203,(float) 206,(float) 212,(float) 0.5));
+			paint.setBackground(new Color(203, 206, 212, 127));
 		}else {
-			paint.setBackground(new Color((float) 128,(float) 255,(float) 0,(float) 0.5));
+			paint.setBackground(new Color(128, 255, 0, 127));
 		}
 		if(infectionType == InfectionType.INFECTED) {
 			if(safetyMeasures == SafetyMeasures.WEARING_MASK) {
