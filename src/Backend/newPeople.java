@@ -5,24 +5,24 @@ import java.util.List;
 import javax.swing.Timer;
 
 public class newPeople {
+	public static InfectionType infectionStatus[] = {InfectionType.INFECTED, InfectionType.NOT_INFECTED};
+	public static SafetyMeasures safetyMeasureStatus[] = {SafetyMeasures.NO_MASK, SafetyMeasures.WEARING_MASK};
+	
 	int xPos;
 	int yPos;
 	Timer timer; 
 	int xDest; 
 	int yDest; 
-	InfectionType infectionStatus;
-
-	public static InfectionType infectionStatus[] = {InfectionType.INFECTED, InfectionType.NOT_INFECTED};
-	public static SafetyMeasures safetyMeasureStatus[] = {SafetyMeasures.NO_MASK, SafetyMeasures.WEARING_MASK};
-	
-	public newPeople(int xPos, int yPos, Timer timer, int xDest, int yDest, InfectionType infectionStatus, SafetyMeasures safetyStatus) {
+	InfectionType infectstatus;
+	SafetyMeasures safetyStatus; 
+	public newPeople(int xPos, int yPos, Timer timer, int xDest, int yDest, InfectionType infectStatus, SafetyMeasures safetyStatus) {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.timer = timer;
 		this.xDest = xDest;
 		this.yDest = yDest;
-		this.infected = infected;
-		this.mask = mask;
+		this.infectstatus = infectStatus; 
+		this.safetyStatus = safe
 	} 
 
 	public static int genRanCoord() {	//Generate random coordinate point
@@ -30,11 +30,6 @@ public class newPeople {
 	}
 	
 	
-	
-	public List<newPeople>getPeoples() { 
-		for()
-		
-	}
 	
 	
 
