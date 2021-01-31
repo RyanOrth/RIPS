@@ -17,7 +17,11 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 	
 	public void initializePeople() {
 		for(int i = 0; i < 5; i++) {
-			people.add(newPeople(xPos, int yPos, Timer timer, int xDest, int yDest, InfectionType infectionStatus, SafetyMeasures safetyStatus));
+			int xPos = newPeople.genRanCoord();
+			int yPos = newPeople.genRanCoord();
+			InfectionType infectionStatusValue = newPeople.infectionStatus[((int)Math.random())];
+			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[((int)Math.random())];
+			people.add(newPeople(xPos, yPos, timer, int xDest, int yDest, infectionStatusValue, safetyStatus));
 		}
 	}
 	
@@ -29,7 +33,7 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 	
 	public void paint(Graphics g) { 
 		Graphics2D g1 = (Graphics2D) g;
-		for(List<newPeople> person : getPeoples) {
+		for(newPeople person : people) {
 			
 		}
 	}
