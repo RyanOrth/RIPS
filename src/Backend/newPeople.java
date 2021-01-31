@@ -114,28 +114,22 @@ public class newPeople {
 		this.yDest = this.genRanCoord(); 
 	}
 	
-	public void move() {
-		//Random ran = new Random(); 
-		
+	public void move() {		
 		if(randStatus() == 1) { 
 			if((this.xDest - this.xPos < 0) && this.xPos > 0) { 
 				this.xPos--; 
-				System.out.println("Moved Left");
 			}
 			
 			else if((this.xDest - this.xPos > 0) && this.xPos < 16) { 
 				this.xPos++; 
-				System.out.println("Moved Right");
 			}
 		} else {
 			if((this.yDest - this.yPos < 0) && this.yPos > 0) { 
 				this.yPos--;
-				System.out.println("Moved Up");
 			}
 			 
 			else if((this.yDest - this.yPos > 0) && this.yPos < 16) { 
 				this.yPos++;
-				System.out.println("Moved Down");
 			}
 		}
 		
@@ -144,6 +138,27 @@ public class newPeople {
 		}
 	}
 	
-	
-
+	private void checkIntersect() {
+		boolean shapeIntersects = true;
+		if (shapeIntersects) {
+			switch (this.infectstatus) {
+			case INFECTED:
+				switch (this.safetyStatus) {
+				case NO_MASK:
+					break;
+				case WEARING_MASK:
+					break;
+				}
+				break;
+			case NOT_INFECTED:
+				switch (this.safetyStatus) {
+				case NO_MASK:
+					break;
+				case WEARING_MASK:
+					break;
+				}
+				break;
+			}
+		}
+	}
 }
