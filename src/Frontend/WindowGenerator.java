@@ -7,15 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class WindowGenerator extends JFrame {
-	private JTextField peopleField = new JTextField("Enter number of people here.");
-	private JTextField infectionField = new JTextField("Enter infection status here. (\"infected\" or \"not infected\")");
-	private JTextField maskField = new JTextField("Enter mask status here. (\"mask\" or \"no mask\")");	
-	private String numPeople;
+	private JTextField peopleField = new JTextField("Enter number of people here."); //Enter number of people here.
+	private JTextField infectionField = new JTextField("Enter number of people here."); //Enter infection status here. (\"infected\" or \"not infected\")
+	private JTextField maskField = new JTextField("Enter number of people here."); //Enter mask status here. (\"mask\" or \"no mask\")
+	private Integer numPeople;
 	private String infectionStatus;
 	private String maskStatus;
 	
@@ -26,20 +27,41 @@ public class WindowGenerator extends JFrame {
 		peopleField.setBounds(900, 100, 40, 20);
 		infectionField.setBounds(920, 100, 40, 20);
 		maskField.setBounds(940, 100, 40, 20);
-		submit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				numPeople = peopleField.getText();
-				infectionStatus = infectionField.getText();
-				maskStatus = maskField.getText();
-				System.out.println(numPeople + "\n" + infectionStatus + "\n" + maskStatus);
-			}
-		});
 		panel.add(submit);
 		panel.add(peopleField);
 		panel.add(infectionField);
 		panel.add(maskField);
+		submit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					numPeople = Integer.valueOf(peopleField.getText());
+					if(infectionField.getText().equals("infected") || infectionField.getText().equals("not infected")) {
+						infectionStatus = infectionField.getText();
+					} else {
+						clearEntry();
+						return;
+					}
+					if(maskField.getText().equals("mask") || maskField.getText().equals("no mask")) {
+						maskStatus = maskField.getText();
+					} else {
+						clearEntry();
+						return;
+					}
+				} catch (IllegalArgumentException j) {
+					clearEntry();
+					return;
+				}
+				System.out.println(numPeople + "\n" + infectionStatus + "\n" + maskStatus);
+			}
+		});
 	    getContentPane().add(panel);
 	    setMinimumSize(new Dimension(1100, 700));
+	}
+	
+	public void clearEntry() {
+		peopleField.setText("");
+		infectionField.setText("");
+		maskField.setText("");
 	}
 	
 	public void paint(Graphics g) {
