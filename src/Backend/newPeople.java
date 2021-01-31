@@ -122,6 +122,12 @@ public class newPeople {
 		return c.nextInt(2);
 	}
 	
+	public static int initialInfectedStatus() {	//Used for initial infection setup
+		//return (int)(Math.random() * 2);
+		SecureRandom c = new SecureRandom();
+		return c.nextInt(99);
+	}
+	
 	public void generateNewDest() { 
 		this.xDest = this.genRanCoord(); 
 		this.yDest = this.genRanCoord(); 

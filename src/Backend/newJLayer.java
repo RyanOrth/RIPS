@@ -22,13 +22,20 @@ public class newJLayer extends JLayeredPane implements ActionListener{
 	static ArrayList<newPeople> people = new ArrayList<newPeople>();
 	
 	public void initializePeople() {
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < 10; i++) {
 			int xPos = newPeople.genRanCoord();
 			int yPos = newPeople.genRanCoord();
 			int xDest = newPeople.genRanCoord();
 			int yDest = newPeople.genRanCoord();
-			InfectionType infectionStatusValue = newPeople.infectionStatus[newPeople.randStatus()];
+			//InfectionType infectionStatusValue = newPeople.infectionStatus[newPeople.randStatus()];
 			SafetyMeasures safetyStatus = newPeople.safetyMeasureStatus[newPeople.randStatus()];
+			InfectionType infectionStatusValue;
+			if(newPeople.initialInfectedStatus() > 66) {
+				infectionStatusValue = InfectionType.INFECTED;
+			} else {
+				infectionStatusValue = InfectionType.NOT_INFECTED;
+			}
+			
 			people.add(new newPeople(xPos, yPos, timer, infectionStatusValue, safetyStatus));
 			System.out.println("Location (" + xPos + ", " + yPos + "), Infection Type: " + infectionStatusValue + ", Safety Measures: " + safetyStatus);
 		}
