@@ -59,10 +59,8 @@ public class PersonBehavior implements ActionListener{
 
 	public void setPos(int xPos, int yPos, Graphics2D paint) {
 		this.xPos = xPos;
-		this.yPos = yPos;
+		this.yPos = yPos; 
 		// Update the shape position here
-		
-		WindowGenerator.generatePersonGraphics((double) xPos,(double) yPos, this.safetyMeasureStatus, this.infectionStatus);
 	}
 
 	public void genDestination() {
