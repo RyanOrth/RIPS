@@ -17,11 +17,7 @@ import javax.swing.Timer;
 public class newJLayer extends JLayeredPane implements ActionListener{
 	Timer timer; 
 	
-<<<<<<< HEAD
-	List<newPeople> people = new ArrayList<newPeople>();
-=======
 	static ArrayList<newPeople> people = new ArrayList<newPeople>();
->>>>>>> branch 'main' of https://github.com/RyanOrth/RIPS.git
 	
 	public void initializePeople() {
 		for(int i = 0; i < 5; i++) {
