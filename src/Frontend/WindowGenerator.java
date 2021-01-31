@@ -200,16 +200,22 @@ public class WindowGenerator extends JFrame implements ActionListener{
 	}
 	
 	
-	@Override
+	/*@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==timer) { 
 			repaint(); 
 		}
-	}
+	}*/
 	
 	public static void main(String args[]) {
 		WindowGenerator map = new WindowGenerator();
 		map.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
